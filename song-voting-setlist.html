@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Song Voting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafc;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #222;
+      text-align: center;
+    }
+    .vote-container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f3f5;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    label:hover { background: #e9ecef; }
+    input[type="radio"] { margin-right: 10px; }
+    button {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+    button:hover { background: #0056b3; }
+    #newSongInput {
+      width: calc(100% - 24px);
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Song Voting</h1>
+  <div class="vote-container">
+    <form id="voteForm">
+      
+      <label>
+        <span><input type="radio" name="song" value="Bonnie und Clyde"> Bonnie und Clyde</span>
+        <span id="count_1">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Free Fallin"> Free Fallin</span>
+        <span id="count_2">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Proud Mary"> Proud Mary</span>
+        <span id="count_3">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Great Expectations"> Great Expectations</span>
+        <span id="count_4">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Ayo Technology"> Ayo Technology</span>
+        <span id="count_5">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Streets of London"> Streets of London</span>
+        <span id="count_6">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Bad Moon Rising"> Bad Moon Rising</span>
+        <span id="count_7">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="The Middle"> The Middle</span>
+        <span id="count_8">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Hotel Cali"> Hotel Cali</span>
+        <span id="count_9">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="I See Fire"> I See Fire</span>
+        <span id="count_10">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Riptide"> Riptide</span>
+        <span id="count_11">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Hero of War"> Hero of War</span>
+        <span id="count_12">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Liebeslied"> Liebeslied</span>
+        <span id="count_13">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Wagon Wheel"> Wagon Wheel</span>
+        <span id="count_14">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Go your own way"> Go your own way</span>
+        <span id="count_15">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Leaving on a Jetplane"> Leaving on a Jetplane</span>
+        <span id="count_16">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Dancing in the Dark"> Dancing in the Dark</span>
+        <span id="count_17">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Breakfast"> Breakfast</span>
+        <span id="count_18">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Willenlos"> Willenlos</span>
+        <span id="count_19">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Hier kommt Alex"> Hier kommt Alex</span>
+        <span id="count_20">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Drops of Jupiter"> Drops of Jupiter</span>
+        <span id="count_21">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Junimond"> Junimond</span>
+        <span id="count_22">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="How to save a life"> How to save a life</span>
+        <span id="count_23">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Folsom"> Folsom</span>
+        <span id="count_24">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="The Boxer"> The Boxer</span>
+        <span id="count_25">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Sexy"> Sexy</span>
+        <span id="count_26">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Believe"> Believe</span>
+        <span id="count_27">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="This Love"> This Love</span>
+        <span id="count_28">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Sweet Home"> Sweet Home</span>
+        <span id="count_29">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Everlong"> Everlong</span>
+        <span id="count_30">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="This is the Life"> This is the Life</span>
+        <span id="count_31">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Valerie"> Valerie</span>
+        <span id="count_32">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="I’m on Fire"> I’m on Fire</span>
+        <span id="count_33">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="American Pie"> American Pie</span>
+        <span id="count_34">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Runaway"> Runaway</span>
+        <span id="count_35">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Rose Tattoo"> Rose Tattoo</span>
+        <span id="count_36">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Sympathy"> Sympathy</span>
+        <span id="count_37">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Johnny B. Goode"> Johnny B. Goode</span>
+        <span id="count_38">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Kryptonite"> Kryptonite</span>
+        <span id="count_39">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Summer of 69"> Summer of 69</span>
+        <span id="count_40">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Heute hier morgen"> Heute hier morgen</span>
+        <span id="count_41">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="You shook me all night"> You shook me all night</span>
+        <span id="count_42">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Best of You"> Best of You</span>
+        <span id="count_43">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Country Roads"> Country Roads</span>
+        <span id="count_44">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Mit 18"> Mit 18</span>
+        <span id="count_45">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="So Lonely"> So Lonely</span>
+        <span id="count_46">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Iris"> Iris</span>
+        <span id="count_47">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Don’t stop believing"> Don’t stop believing</span>
+        <span id="count_48">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Don’t look back in"> Don’t look back in</span>
+        <span id="count_49">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Zehn kleine"> Zehn kleine</span>
+        <span id="count_50">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Mr. Brightside"> Mr. Brightside</span>
+        <span id="count_51">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Save Tonight"> Save Tonight</span>
+        <span id="count_52">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Purple Rain"> Purple Rain</span>
+        <span id="count_53">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Knocking"> Knocking</span>
+        <span id="count_54">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Westerland"> Westerland</span>
+        <span id="count_55">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Taximann"> Taximann</span>
+        <span id="count_56">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Wir haben Grund"> Wir haben Grund</span>
+        <span id="count_57">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="König"> König</span>
+        <span id="count_58">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Narcotic"> Narcotic</span>
+        <span id="count_59">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Wonderwall"> Wonderwall</span>
+        <span id="count_60">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Angels"> Angels</span>
+        <span id="count_61">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Ein Kompliment"> Ein Kompliment</span>
+        <span id="count_62">0</span>
+      </label>
+    
+      <label>
+        <span><input type="radio" name="song" value="Dicke"> Dicke</span>
+        <span id="count_63">0</span>
+      </label>
+    
+      <button type="button" id="voteButton">Abstimmen</button>
+    </form>
+
+    <input type="text" id="newSongInput" placeholder="Eigenen Songvorschlag eingeben..." />
+    <button type="button" id="addSongButton">Absenden</button>
+  </div>
+
+  <script>
+    const counts = JSON.parse(localStorage.getItem('songVotes')) || {};
+
+    function updateDisplay() {
+      for (const key in counts) {
+        const el = document.querySelector(`[data-key='${key}']`);
+        if (el) el.textContent = counts[key];
+      }
+    }
+
+    updateDisplay();
+
+    document.getElementById('voteButton').addEventListener('click', () => {
+      const selected = document.querySelector('input[name="song"]:checked');
+      if (!selected) {
+        alert('Bitte eine Option auswählen!');
+        return;
+      }
+      const key = selected.value.replace(/\s+/g, '_');
+      counts[key] = (counts[key] || 0) + 1;
+      localStorage.setItem('songVotes', JSON.stringify(counts));
+      updateDisplay();
+      alert('Danke für deine Stimme für ' + selected.value + '!');
+      selected.checked = false;
+    });
+
+    document.getElementById('addSongButton').addEventListener('click', () => {
+      const input = document.getElementById('newSongInput');
+      const newSong = input.value.trim();
+      if (!newSong) {
+        alert('Bitte gib einen Songtitel ein!');
+        return;
+      }
+      const form = document.getElementById('voteForm');
+      const newLabel = document.createElement('label');
+      newLabel.innerHTML = `<span><input type="radio" name="song" value="${newSong} (Wunsch)"> ${newSong} <em>(Wunsch)</em></span><span data-key="${newSong.replace(/\s+/g, '_')}" id="count_${Date.now()}">0</span>`;
+      form.insertBefore(newLabel, document.getElementById('voteButton'));
+      input.value = '';
+      alert('"' + newSong + '" wurde als Wunsch hinzugefügt!');
+    });
+  </script>
+</body>
+</html>
