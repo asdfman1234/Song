@@ -6,198 +6,316 @@
   <title>Song Voting</title>
   <style>
     :root {
-      --primary: #007bff;
-      --primary-hover: #0056b3;
-      --bg: #f5f7fb;
-      --card-bg: #fff;
-      --accent: #E1306C;
+      --bg: #0e1014;
+      --card: rgba(19, 22, 28, 0.9);
+      --accent: #e1306c;
+      --primary: #4a7dff;
+      --primary-hover: #335fc9;
+      --text: #f5f5f5;
+      --muted: #a8b0c0;
+      --line: rgba(255,255,255,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: "Inter", Arial, sans-serif;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1a1d24 0%, #0e1014 60%, #0a0b0f 100%);
       margin: 0;
-      padding: 20px;
+      padding: 20px 16px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    h1 {
-      color: #222;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 1.8em;
-    }
-
-    .vote-container {
-      width: 100%;
-      max-width: 420px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #f1f3f5;
-      border-radius: 8px;
-      padding: 10px 14px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    label:hover {
-      background: #e9ecef;
-      transform: scale(1.01);
-    }
-
-    input[type="radio"] {
-      margin-right: 10px;
-    }
-
-    button {
-      width: 100%;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background: var(--primary-hover);
-    }
-
-    #newSongInput {
-      width: calc(100% - 24px);
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
+      color: var(--text);
+      min-height: 100vh;
     }
 
     #instagramBtn {
       background: var(--accent);
-      color: white;
-      font-weight: bold;
+      color: #fff;
+      font-weight: 600;
       text-decoration: none;
       display: inline-block;
       text-align: center;
       padding: 14px 22px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      width: 90%;
-      max-width: 420px;
-      transition: background 0.3s;
-      font-size: 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      width: min(460px, 100%);
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 25px rgba(225, 48, 108, 0.25);
     }
 
     #instagramBtn:hover {
-      background: #c7235d;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(225, 48, 108, 0.29);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0 0 4px;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .vote-container {
+      width: min(460px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 16px;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+      padding: 18px 16px 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .song-list {
+      max-height: 380px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      padding-right: 6px;
+    }
+
+    .song-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .song-list::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+    }
+
+    label.song-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.01);
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+      gap: 10px;
+    }
+
+    label.song-item:hover {
+      background: rgba(74, 125, 255, 0.12);
+      border: 1px solid rgba(74, 125, 255, 0.35);
+    }
+
+    .song-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    input[type="radio"] {
+      accent-color: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .song-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+    }
+
+    .song-count {
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.02);
+      border-radius: 999px;
+      padding: 3px 9px 4px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--text);
+      outline: none;
+      transition: border 0.2s;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(245,245,245,0.25);
+    }
+
+    input[type="text"]:focus {
+      border: 1px solid rgba(74, 125, 255, 0.6);
+    }
+
+    button.action {
+      width: 100%;
+      background: var(--primary);
+      border: none;
+      border-radius: 10px;
+      padding: 11px 14px;
+      margin-top: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button.action.secondary {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    button.action:hover {
+      background: var(--primary-hover);
+    }
+
+    button.action:active {
+      transform: translateY(1px);
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(245,245,245,0.4);
+      margin: 8px 0 4px;
+    }
+
+    @media (max-width: 500px) {
+      .song-title {
+        max-width: 150px;
+      }
     }
   </style>
 </head>
 <body>
   <a id="instagramBtn" href="https://instagram.com/maurice_has" target="_blank">Folge mir auf Instagram</a>
   <h1>Song Voting</h1>
-  <div class="vote-container">
-    <form id="voteForm"></form>
+  <p class="subtitle">Wähle deinen Song oder mach einen Wunsch</p>
 
+  <div class="vote-container">
+    <div class="section-title">Songs</div>
+    <form id="voteForm">
+      <div id="songList" class="song-list"></div>
+    </form>
+
+    <div class="section-title">Wunsch</div>
     <input type="text" id="newSongInput" placeholder="Eigenen Songvorschlag eingeben..." />
-    <button type="button" id="addSongButton">Absenden</button>
-    <button type="button" id="voteButton">Abstimmen</button>
+    <button type="button" id="addSongButton" class="action secondary">Absenden</button>
+    <button type="button" id="voteButton" class="action">Abstimmen</button>
   </div>
 
   <script>
-    const songs = [
-      "Bonnie und Clyde","Free Fallin","Proud Mary","Great Expectations","Ayo Technology",
-      "Streets of London","Bad Moon Rising","The Middle","Hotel California","I See Fire","Riptide",
-      "Hero of War","Liebeslied","Wagon Wheel","Go your own way","Leaving on a Jetplane",
-      "Dancing in the Dark","Breakfast","Willenlos","Hier kommt Alex","Drops of Jupiter",
-      "Junimond","How to save a life","Folsom Prison Blues","The Boxer","Sexy","Believe","This Love",
-      "Sweet Home Alabama","Everlong","This is the Life","Valerie","I’m on Fire","American Pie",
-      "Runaway","Rose Tattoo","Sympathy for the Devil","Johnny B. Goode","Kryptonite","Summer of 69",
-      "Heute hier morgen dort","You shook me all night long","Best of You","Country Roads","Mit 18",
-      "So Lonely","Iris","Don’t stop believing","Don’t look back in anger","Zehn kleine Jägermeister",
-      "Mr. Brightside","Save Tonight","Purple Rain","Knocking on Heaven’s Door","Westerland","Taximann",
-      "Wir haben Grund zu feiern","König von Deutschland","Narcotic","Wonderwall","Angels","Ein Kompliment","Dicke"
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+      // deine Setlist
+      const songs = [
+        "Bonnie und Clyde","Free Fallin","Proud Mary","Great Expectations","Ayo Technology",
+        "Streets of London","Bad Moon Rising","The Middle","Hotel California","I See Fire","Riptide",
+        "Hero of War","Liebeslied","Wagon Wheel","Go your own way","Leaving on a Jetplane",
+        "Dancing in the Dark","Breakfast at Tiffany's","Willenlos","Hier kommt Alex","Drops of Jupiter",
+        "Junimond","How to save a life","Folsom Prison Blues","The Boxer","Sexy","Believe","This Love",
+        "Sweet Home Alabama","Everlong","This is the Life","Valerie","I’m on Fire","American Pie",
+        "Runaway","Rose Tattoo","Sympathy for the Devil","Johnny B. Goode","Kryptonite","Summer of 69",
+        "Heute hier morgen dort","You shook me all night long","Best of You","Country Roads","Mit 18",
+        "So Lonely","Iris","Don’t stop believing","Don’t look back in anger","Zehn kleine Jägermeister",
+        "Mr. Brightside","Save Tonight","Purple Rain","Knocking on Heaven’s Door","Westerland","Taximann",
+        "Wir haben Grund zu feiern","König von Deutschland","Narcotic","Wonderwall","Angels","Ein Kompliment","Dicke"
+      ];
 
-    const bannedWords = ["onkelz", "böhse", "onkels", "helene", "fischer", "andrea", "berg"];
-    const counts = JSON.parse(localStorage.getItem('songVotes')) || {};
-    const form = document.getElementById('voteForm');
+      // Worte, die du blocken willst
+      const bannedWords = ["onkelz", "böhse", "onkels", "helene", "fischer", "andrea", "berg"];
 
-    songs.forEach((song, i) => {
-      const label = document.createElement('label');
-      const key = song.replace(/\s+/g, '_');
-      const count = counts[key] || 0;
-      label.innerHTML = `
-        <span><input type="radio" name="song" value="${song}"> ${song}</span>
-        <span data-key="${key}" id="count_${i}">${count}</span>
-      `;
-      form.appendChild(label);
-    });
+      const counts = JSON.parse(localStorage.getItem('songVotes')) || {};
+      const songList = document.getElementById('songList');
 
-    function updateDisplay() {
-      for (const key in counts) {
-        const el = document.querySelector(\`[data-key='\${key}']\`);
-        if (el) el.textContent = counts[key];
+      // Songs sichtbar einfügen
+      songs.forEach((song, i) => {
+        const key = song.replace(/\s+/g, '_');
+        const count = counts[key] || 0;
+
+        const label = document.createElement('label');
+        label.className = 'song-item';
+        label.innerHTML = `
+          <div class="song-left">
+            <input type="radio" name="song" value="${song}">
+            <div class="song-title">${song}</div>
+          </div>
+          <div class="song-count" data-key="${key}">${count}</div>
+        `;
+        songList.appendChild(label);
+      });
+
+      // Anzeige aktualisieren
+      function updateDisplay() {
+        for (const key in counts) {
+          const el = document.querySelector(\`[data-key="\${key}"]\`);
+          if (el) el.textContent = counts[key];
+        }
       }
-    }
-
-    updateDisplay();
-
-    document.getElementById('voteButton').addEventListener('click', () => {
-      const selected = document.querySelector('input[name="song"]:checked');
-      if (!selected) {
-        alert('Bitte eine Option auswählen!');
-        return;
-      }
-
-      const key = selected.value.replace(/\s+/g, '_');
-      counts[key] = (counts[key] || 0) + 1;
-      localStorage.setItem('songVotes', JSON.stringify(counts));
       updateDisplay();
-      alert(\`Danke für deine Stimme für "\${selected.value}"!\`);
-      selected.checked = false;
-    });
 
-    document.getElementById('addSongButton').addEventListener('click', () => {
-      const input = document.getElementById('newSongInput');
-      const newSong = input.value.trim();
-      if (!newSong) {
-        alert('Bitte gib einen Songtitel ein!');
-        return;
-      }
+      // Abstimmen
+      document.getElementById('voteButton').addEventListener('click', () => {
+        const selected = document.querySelector('input[name="song"]:checked');
+        if (!selected) {
+          alert('Bitte einen Song auswählen!');
+          return;
+        }
+        const key = selected.value.replace(/\s+/g, '_');
+        counts[key] = (counts[key] || 0) + 1;
+        localStorage.setItem('songVotes', JSON.stringify(counts));
+        updateDisplay();
+        alert(\`Danke für deine Stimme für "\${selected.value}"!\`);
+        selected.checked = false;
+      });
 
-      const lower = newSong.toLowerCase();
-      if (bannedWords.some(word => lower.includes(word))) {
-        alert('Tut mir leid, das scheint ein Scheißlied zu sein.');
+      // Wunsch hinzufügen
+      document.getElementById('addSongButton').addEventListener('click', () => {
+        const input = document.getElementById('newSongInput');
+        const newSong = input.value.trim();
+        if (!newSong) {
+          alert('Bitte gib einen Songtitel ein!');
+          return;
+        }
+
+        const lower = newSong.toLowerCase();
+        if (bannedWords.some(word => lower.includes(word))) {
+          alert('Tut mir leid, das scheint ein Scheißlied zu sein.');
+          input.value = '';
+          return;
+        }
+
+        const key = newSong.replace(/\s+/g, '_') + '_Wunsch';
+        counts[key] = counts[key] || 0;
+
+        const label = document.createElement('label');
+        label.className = 'song-item';
+        label.innerHTML = `
+          <div class="song-left">
+            <input type="radio" name="song" value="${newSong} (Wunsch)">
+            <div class="song-title">${newSong} <em>(Wunsch)</em></div>
+          </div>
+          <div class="song-count" data-key="${key}">0</div>
+        `;
+        songList.appendChild(label);
         input.value = '';
-        return;
-      }
-
-      const key = newSong.replace(/\s+/g, '_') + '_Wunsch';
-      counts[key] = counts[key] || 0;
-
-      const newLabel = document.createElement('label');
-      newLabel.innerHTML = `
-        <span><input type="radio" name="song" value="\${newSong} (Wunsch)"> \${newSong} <em>(Wunsch)</em></span>
-        <span data-key="\${key}">0</span>
-      `;
-      form.appendChild(newLabel);
-      input.value = '';
-      alert(\`"\${newSong}" wurde als Wunsch hinzugefügt!\`);
+        alert(\`"\${newSong}" wurde als Wunsch hinzugefügt!\`);
+      });
     });
   </script>
 </body>
