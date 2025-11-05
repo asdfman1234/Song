@@ -13,13 +13,9 @@
       --primary-hover: #335fc9;
       --text: #f5f5f5;
       --muted: #a8b0c0;
-      --line: rgba(255,255,255,0.05);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #1a1d24 0%, #0e1014 60%, #0a0b0f 100%);
@@ -46,30 +42,17 @@
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 10px 25px rgba(225, 48, 108, 0.25);
     }
-
     #instagramBtn:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 30px rgba(225, 48, 108, 0.29);
     }
 
-    h1 {
-      font-size: 1.9rem;
-      margin: 0 0 4px;
-      text-align: center;
-      letter-spacing: -0.01em;
-    }
-
-    .subtitle {
-      font-size: 0.85rem;
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+    h1 { font-size: 1.9rem; margin: 0 0 4px; text-align: center; }
+    .subtitle { font-size: 0.85rem; text-align: center; color: var(--muted); margin-bottom: 16px; }
 
     .vote-container {
       width: min(460px, 100%);
       background: var(--card);
-      border: 1px solid rgba(255,255,255,0.03);
       border-radius: 16px;
       box-shadow: 0 16px 30px rgba(0,0,0,0.25);
       padding: 18px 16px 18px;
@@ -84,11 +67,11 @@
     }
 
     .song-list::-webkit-scrollbar {
-      width: 4px;
+      width: 5px;
     }
     .song-list::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.08);
-      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
     }
 
     label.song-item {
@@ -96,111 +79,39 @@
       justify-content: space-between;
       align-items: center;
       background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.05);
       border-radius: 10px;
       padding: 8px 10px;
       margin-bottom: 6px;
       cursor: pointer;
-      transition: background 0.2s, border 0.2s;
-      gap: 10px;
+      transition: all 0.3s ease;
     }
 
     label.song-item:hover {
       background: rgba(74, 125, 255, 0.12);
-      border: 1px solid rgba(74, 125, 255, 0.35);
+      border-color: rgba(74, 125, 255, 0.35);
     }
 
-    .song-left {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      min-width: 0;
-    }
-
-    input[type="radio"] {
-      accent-color: var(--primary);
-      flex: 0 0 auto;
-    }
-
-    .song-title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 220px;
-    }
-
-    .song-count {
-      font-size: 0.75rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.02);
-      border-radius: 999px;
-      padding: 3px 9px 4px;
-      color: var(--muted);
-      flex: 0 0 auto;
-    }
+    input[type="radio"] { accent-color: var(--primary); }
+    .song-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px; }
+    .song-count { font-size: 0.75rem; background: rgba(255,255,255,0.04);
+      border-radius: 999px; padding: 3px 9px; color: var(--muted); }
 
     input[type="text"] {
-      width: 100%;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 10px;
-      padding: 10px 12px;
-      color: var(--text);
-      outline: none;
-      transition: border 0.2s;
-      font-size: 0.9rem;
-      margin-top: 6px;
-    }
-
-    input[type="text"]::placeholder {
-      color: rgba(245,245,245,0.25);
-    }
-
-    input[type="text"]:focus {
-      border: 1px solid rgba(74, 125, 255, 0.6);
+      width: 100%; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px; padding: 10px 12px; color: var(--text);
+      outline: none; margin-top: 6px;
     }
 
     button.action {
-      width: 100%;
-      background: var(--primary);
-      border: none;
-      border-radius: 10px;
-      padding: 11px 14px;
-      margin-top: 8px;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
+      width: 100%; background: var(--primary);
+      border: none; border-radius: 10px; padding: 11px 14px;
+      margin-top: 8px; color: #fff; font-weight: 600;
+      font-size: 0.95rem; cursor: pointer;
     }
 
-    button.action.secondary {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      color: #fff;
-    }
-
-    button.action:hover {
-      background: var(--primary-hover);
-    }
-
-    button.action:active {
-      transform: translateY(1px);
-    }
-
-    .section-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(245,245,245,0.4);
-      margin: 8px 0 4px;
-    }
-
-    @media (max-width: 500px) {
-      .song-title {
-        max-width: 150px;
-      }
-    }
+    button.action.secondary { background: rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
@@ -209,25 +120,22 @@
   <p class="subtitle">Wähle deinen Song oder mach einen Wunsch</p>
 
   <div class="vote-container">
-    <div class="section-title">Songs</div>
     <form id="voteForm">
       <div id="songList" class="song-list"></div>
     </form>
 
-    <div class="section-title">Wunsch</div>
     <input type="text" id="newSongInput" placeholder="Eigenen Songvorschlag eingeben..." />
     <button type="button" id="addSongButton" class="action secondary">Absenden</button>
     <button type="button" id="voteButton" class="action">Abstimmen</button>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // deine Setlist
+    document.addEventListener("DOMContentLoaded", () => {
       const songs = [
         "Bonnie und Clyde","Free Fallin","Proud Mary","Great Expectations","Ayo Technology",
         "Streets of London","Bad Moon Rising","The Middle","Hotel California","I See Fire","Riptide",
         "Hero of War","Liebeslied","Wagon Wheel","Go your own way","Leaving on a Jetplane",
-        "Dancing in the Dark","Breakfast at Tiffany's","Willenlos","Hier kommt Alex","Drops of Jupiter",
+        "Dancing in the Dark","Breakfast","Willenlos","Hier kommt Alex","Drops of Jupiter",
         "Junimond","How to save a life","Folsom Prison Blues","The Boxer","Sexy","Believe","This Love",
         "Sweet Home Alabama","Everlong","This is the Life","Valerie","I’m on Fire","American Pie",
         "Runaway","Rose Tattoo","Sympathy for the Devil","Johnny B. Goode","Kryptonite","Summer of 69",
@@ -237,45 +145,40 @@
         "Wir haben Grund zu feiern","König von Deutschland","Narcotic","Wonderwall","Angels","Ein Kompliment","Dicke"
       ];
 
-      // Worte, die du blocken willst
       const bannedWords = ["onkelz", "böhse", "onkels", "helene", "fischer", "andrea", "berg"];
-
       const counts = JSON.parse(localStorage.getItem('songVotes')) || {};
       const songList = document.getElementById('songList');
 
-      // Songs sichtbar einfügen
-      songs.forEach((song, i) => {
-        const key = song.replace(/\s+/g, '_');
-        const count = counts[key] || 0;
+      function renderSongs() {
+        songList.innerHTML = "";
+        songs.forEach(song => {
+          const key = song.replace(/\s+/g, '_');
+          const count = counts[key] || 0;
+          const label = document.createElement('label');
+          label.className = 'song-item';
+          label.innerHTML = `
+            <div class="song-left">
+              <input type="radio" name="song" value="${song}">
+              <div class="song-title">${song}</div>
+            </div>
+            <div class="song-count" data-key="${key}">${count}</div>`;
+          songList.appendChild(label);
+        });
+      }
 
-        const label = document.createElement('label');
-        label.className = 'song-item';
-        label.innerHTML = `
-          <div class="song-left">
-            <input type="radio" name="song" value="${song}">
-            <div class="song-title">${song}</div>
-          </div>
-          <div class="song-count" data-key="${key}">${count}</div>
-        `;
-        songList.appendChild(label);
-      });
-
-      // Anzeige aktualisieren
       function updateDisplay() {
         for (const key in counts) {
-          const el = document.querySelector(\`[data-key="\${key}"]\`);
+          const el = document.querySelector(\`[data-key='\${key}']\`);
           if (el) el.textContent = counts[key];
         }
       }
+
+      renderSongs();
       updateDisplay();
 
-      // Abstimmen
       document.getElementById('voteButton').addEventListener('click', () => {
         const selected = document.querySelector('input[name="song"]:checked');
-        if (!selected) {
-          alert('Bitte einen Song auswählen!');
-          return;
-        }
+        if (!selected) return alert('Bitte einen Song auswählen!');
         const key = selected.value.replace(/\s+/g, '_');
         counts[key] = (counts[key] || 0) + 1;
         localStorage.setItem('songVotes', JSON.stringify(counts));
@@ -284,25 +187,17 @@
         selected.checked = false;
       });
 
-      // Wunsch hinzufügen
       document.getElementById('addSongButton').addEventListener('click', () => {
         const input = document.getElementById('newSongInput');
         const newSong = input.value.trim();
-        if (!newSong) {
-          alert('Bitte gib einen Songtitel ein!');
-          return;
-        }
-
+        if (!newSong) return alert('Bitte gib einen Songtitel ein!');
         const lower = newSong.toLowerCase();
         if (bannedWords.some(word => lower.includes(word))) {
           alert('Tut mir leid, das scheint ein Scheißlied zu sein.');
           input.value = '';
           return;
         }
-
         const key = newSong.replace(/\s+/g, '_') + '_Wunsch';
-        counts[key] = counts[key] || 0;
-
         const label = document.createElement('label');
         label.className = 'song-item';
         label.innerHTML = `
@@ -310,8 +205,7 @@
             <input type="radio" name="song" value="${newSong} (Wunsch)">
             <div class="song-title">${newSong} <em>(Wunsch)</em></div>
           </div>
-          <div class="song-count" data-key="${key}">0</div>
-        `;
+          <div class="song-count" data-key="${key}">0</div>`;
         songList.appendChild(label);
         input.value = '';
         alert(\`"\${newSong}" wurde als Wunsch hinzugefügt!\`);
